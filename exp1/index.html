@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Haven - Online Library</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:#f4f6f8; color:#333; }
+        nav { background:#2c3e50; color:#fff; padding:1rem 2rem; display:flex; justify-content:space-between; align-items:center; }
+        nav a { color:#fff; text-decoration:none; font-weight:700; margin-left:1rem }
+        .container { max-width:1100px; margin:2rem auto; padding:0 1rem }
+        .book-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:1.5rem; margin-top:1.5rem }
+        .book-card { background:#fff; border-radius:8px; box-shadow:0 4px 6px rgba(0,0,0,0.08); padding:1rem; display:flex; flex-direction:column; align-items:center; }
+        .book-cover { width:100%; height:260px; background:linear-gradient(135deg,#e2e8f0,#cbd5e1); border-radius:6px; margin-bottom:1rem; display:flex; align-items:center; justify-content:center; color:#667085 }
+        .book-title { font-weight:700; margin-bottom:0.25rem }
+        .book-author { color:#6b7280; font-size:0.9rem }
+        footer { text-align:center; color:#6b7280; margin:2rem 0 }
+        @media (max-width:600px){ .book-cover{height:180px} }
+    </style>
+</head>
+<body>
+    <nav>
+        <div style="display:flex;align-items:center"><a href="#" style="font-size:1.125rem">Book Haven</a></div>
+        <div>
+            <a href="#">Home</a>
+            <a href="#">Catalog</a>
+            <a href="#">About</a>
+        </div>
+    </nav>
+    <main class="container">
+        <h1 style="margin-top:1rem">Featured Books</h1>
+        <section class="book-grid">
+            <article class="book-card">
+                <div class="book-cover">Cover</div>
+                <div class="book-title">The Great Adventure</div>
+                <div class="book-author">By A. Author</div>
+            </article>
+            <article class="book-card">
+                <div class="book-cover">Cover</div>
+                <div class="book-title">Learning Web</div>
+                <div class="book-author">By B. Writer</div>
+            </article>
+            <article class="book-card">
+                <div class="book-cover">Cover</div>
+                <div class="book-title">CSS Mastery</div>
+                <div class="book-author">By C. Designer</div>
+            </article>
+        </section>
+    </main>
+    <footer>
+        © Book Haven — A simple demo library
+    </footer>
+</body>
+</html>
