@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country Capital Selector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+
+        label {
+            font-weight: bold;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        select {
+            padding: 8px 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        /* Custom CSS Properties for the Capital Font */
+        .capital-output {
+            margin-left: 15px;
+            font-family: 'Georgia', serif; /* Custom Font Family */
+            font-size: 20px;               /* Custom Font Size */
+            font-weight: bold;             /* Custom Font Weight */
+            font-style: italic;            /* Custom Font Style */
+            color: #d9534f;                /* Custom Font Color */
+            letter-spacing: 1px;           /* Custom Letter Spacing */
+            text-transform: uppercase;     /* Transforms text to Uppercase */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <label for="countrySelect">Select a Country:</label>
+        
+        <!-- Selection Box with 5 Countries -->
+        <select id="countrySelect" onchange="showCapital()">
+            <option value="">-- Choose Country --</option>
+            <option value="New Delhi">India</option>
+            <option value="Washington, D.C.">USA</option>
+            <option value="Tokyo">Japan</option>
+            <option value="Paris">France</option>
+            <option value="Canberra">Australia</option>
+        </select>
+
+        <!-- Capital display area next to the list -->
+        <span id="capitalDisplay" class="capital-output"></span>
+    </div>
+
+    <script>
+        function showCapital() {
+            // Get the select element
+            const selectElement = document.getElementById("countrySelect");
+            // Get the selected value (Capital name)
+            const capital = selectElement.value;
+            // Get the span tag where capital will be displayed
+            const displaySpan = document.getElementById("capitalDisplay");
+
+            // Update text output
+            if (capital) {
+                displaySpan.textContent = "Capital: " + capital;
+            } else {
+                displaySpan.textContent = ""; // Clear if default option selected
+            }
+        }
+    </script>
+
+</body>
+</html>

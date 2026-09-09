@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Information Portal</title>
+</head>
+
+<!-- We use <frameset> instead of <body> for frame layouts -->
+<frameset cols="30%, 70%">
+    <!-- Left frame loads left.html -->
+    <frame src="left.html" name="leftFrame">
+    
+    <!-- Right frame loads right.html by default -->
+    <frame src="right.html" name="rightFrame">
+    
+    <noframes>
+        <body>
+            <p>Your browser does not support frames.</p>
+        </body>
+    </noframes>
+</frameset>
+</html>
