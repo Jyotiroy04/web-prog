@@ -15,6 +15,10 @@
             border-radius: 5px;
             background-color: #fff;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            /* prepare for JS-driven reveal animation */
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity .4s ease, transform .4s ease;
         }
         h2 {
             color: #333;
@@ -25,6 +29,14 @@
             color: #666;
             margin-bottom: 10px;
         }
+        .welcome {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+        }
     </style>
 </head>
 <body>
@@ -32,6 +44,10 @@
     <h1>Book Details</h1>
     <p>Click on any book name on the left panel to jump directly to its details.</p>
     <hr>
+    <div class="welcome" id="welcome">
+        <h2>Welcome to the Book Portal</h2>
+        <p>Select a book from the left to reveal its detailed review here.</p>
+    </div>
 
     <div class="book-card" id="book1">
         <h2>To Kill a Mockingbird</h2>
@@ -56,6 +72,43 @@
         <div class="meta"><strong>Author:</strong> Jane Austen | <strong>Genre:</strong> Romance / Classic | <strong>Price:</strong> $11.20</div>
         <p><strong>Description:</strong> A romantic novel of manners following the turbulent relationship between Elizabeth Bennet and Fitzwilliam Darcy as they overcome their own pride and prejudices.</p>
     </div>
+    <script>
+        // Show a welcome message by default; when a `book` query parameter is present,
+        // hide the welcome and reveal the selected card with a small animation.
+        (function() {
+            const params = new URLSearchParams(window.location.search);
+            const bookKey = params.get('book');
+            const welcome = document.getElementById('welcome');
+            const cards = Array.from(document.querySelectorAll('.book-card'));
 
+            // hide all cards initially
+            cards.forEach(c => {
+                c.style.display = 'none';
+                c.style.opacity = 0;
+                c.style.transform = 'translateY(10px)';
+            });
+
+            if (!bookKey) {
+                if (welcome) welcome.style.display = 'block';
+                return;
+            }
+
+            if (welcome) welcome.style.display = 'none';
+
+            const target = document.getElementById(bookKey);
+            if (target) {
+                // make it visible and animate in
+                target.style.display = 'block';
+                // trigger a frame to allow transition
+                requestAnimationFrame(() => {
+                    target.style.opacity = 1;
+                    target.style.transform = 'translateY(0)';
+                });
+                const heading = document.querySelector('h1');
+                if (heading) heading.textContent = 'Detailed Review';
+                window.scrollTo(0, 0);
+            }
+        })();
+    </script>
 </body>
 </html>
